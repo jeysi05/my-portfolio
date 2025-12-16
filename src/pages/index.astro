@@ -1,83 +1,59 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import { projects } from '../data/projects'; // <--- Now importing from data file
+import { projects } from '../data/projects';
 ---
 
-<Layout title="John Alcantara - Web Developer">
-  <main class="max-w-4xl mx-auto px-6">
+<Layout title="John Alcantara | Web Developer">
+  <main class="max-w-4xl mx-auto px-6 py-12">
     
-    <section class="py-20">
-      <h1 class="text-5xl font-extrabold mb-6 tracking-tight">
-        Hi, I'm <span class="text-blue-600">John Alcantara</span>.
+    <section class="mb-20 pt-10">
+      <span class="text-blue-600 font-bold tracking-wider uppercase text-sm">Web Developer</span>
+      <h1 class="text-5xl md:text-6xl font-extrabold text-gray-900 mt-4 mb-6 leading-tight">
+        Building digital experiences with <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-cyan-500">code</span> and creativity.
       </h1>
-      <p class="text-xl text-gray-600 max-w-2xl leading-relaxed">
-        I am a web developer based in the Philippines, passionate about building accessible, performant web applications and scalable backend systems.
+      <p class="text-xl text-gray-600 leading-relaxed max-w-2xl mb-8">
+        Hi, I'm <strong>John Alcantara</strong>. I am a passionate developer based in the Philippines. 
+        I specialize in building fast, accessible, and responsive web applications using 
+        modern tools like <strong>React</strong>, <strong>Next.js</strong>, and <strong>Node.js</strong>.
       </p>
       
-      <div class="mt-8">
-        <button
-          id="copy-email-btn"
-          data-email="j.alcantara1005@gmail.com" 
-          class="inline-block bg-blue-600 text-white px-6 py-3 rounded-lg font-medium hover:bg-blue-700 transition cursor-pointer active:scale-95"
-        >
-          Copy Email Address
-        </button>
-        <p id="copy-message" class="text-green-600 text-sm mt-2 hidden font-medium">
-          Email copied to clipboard!
-        </p>
+      <div class="flex gap-4">
+        <a href="#projects" class="bg-gray-900 text-white px-6 py-3 rounded-lg font-medium hover:bg-gray-800 transition">
+          View My Work
+        </a>
+        <a href="mailto:jeysi05@gmail.com" class="bg-white border border-gray-300 text-gray-700 px-6 py-3 rounded-lg font-medium hover:bg-gray-50 transition">
+          Contact Me
+        </a>
       </div>
     </section>
 
-    <section class="py-10">
-      <h2 class="text-2xl font-bold mb-8 text-gray-900">Selected Projects</h2>
-      
-      <div class="grid gap-8 md:grid-cols-2">
-        {projects.map((project) => (
-          <a 
-            href={`/projects/${project.slug}`} 
-            class="group block p-6 bg-white border border-gray-100 rounded-2xl shadow-sm hover:shadow-md hover:border-blue-100 transition duration-300"
-          >
-            <h3 class="text-xl font-bold mb-2 group-hover:text-blue-600 transition">
-              {project.title} &rarr;
+    <h2 id="projects" class="text-2xl font-bold text-gray-900 mb-8 flex items-center gap-2">
+      <span class="w-2 h-8 bg-blue-600 rounded-full"></span>
+      Featured Projects
+    </h2>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+      {projects.map((project) => (
+        <a href={`/projects/${project.slug}`} class="group block h-full">
+          <div class="bg-white border border-gray-200 rounded-2xl p-6 h-full hover:shadow-xl hover:border-blue-100 transition duration-300 transform hover:-translate-y-1">
+            <h3 class="text-xl font-bold text-gray-900 group-hover:text-blue-600 transition mb-3 flex justify-between items-center">
+              {project.title} 
+              <span class="text-gray-400 group-hover:translate-x-1 transition">&rarr;</span>
             </h3>
-            <p class="text-gray-600 mb-4 h-auto min-h-[3rem]">
+            <p class="text-gray-600 mb-6 text-sm leading-relaxed line-clamp-3">
               {project.description}
             </p>
-            <div class="flex flex-wrap gap-2">
+            <div class="flex flex-wrap gap-2 mt-auto">
               {project.tech.map((t) => (
-                <span class="bg-gray-100 text-gray-700 text-xs font-semibold px-2.5 py-0.5 rounded">
+                <span class="bg-blue-50 text-blue-700 text-xs font-semibold px-3 py-1 rounded-full">
                   {t}
                 </span>
               ))}
             </div>
-          </a>
-        ))}
-      </div>
-    </section>
-
+          </div>
+        </a>
+      ))}
+    </div>
+    
   </main>
-
-  <script>
-    const emailBtn = document.getElementById('copy-email-btn');
-    const message = document.getElementById('copy-message');
-
-    if (emailBtn && message) {
-      emailBtn.addEventListener('click', () => {
-      const email = emailBtn.getAttribute('data-email');
-      
-      // Copy to clipboard
-      if (email) {
-          navigator.clipboard.writeText(email).then(() => {
-            // Show success message
-            message.classList.remove('hidden');
-            
-            // Hide message after 2 seconds
-            setTimeout(() => {
-              message.classList.add('hidden');
-            }, 2000);
-          });
-        }
-      });
-    }
-  </script>
 </Layout>
