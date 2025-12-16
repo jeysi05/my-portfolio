@@ -1,0 +1,60 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { projects } from '../../data/projects';
+
+export async function getStaticPaths() {
+  return projects.map((project) => ({
+    params: { slug: project.slug },
+    props: { project },
+  }));
+}
+
+const { project } = Astro.props;
+---
+
+<Layout title={`${project.title} | John Alcantara`}>
+  <main class="max-w-3xl mx-auto px-6 py-20">
+    <a href="/" class="text-blue-600 hover:underline mb-8 inline-block">&larr; Back to Home</a>
+
+    <h1 class="text-4xl font-extrabold mb-4">{project.title}</h1>
+    
+    <div class="flex flex-wrap gap-2 mb-8">
+      {project.tech.map((t) => (
+        <span class="bg-gray-100 text-gray-700 text-sm font-semibold px-3 py-1 rounded-full">
+          {t}
+        </span>
+      ))}
+    </div>
+
+    <div class="prose prose-lg text-gray-600 mb-10">
+      <p class="text-xl leading-relaxed">{project.fullDescription}</p>
+      <p>
+        Here you can add more details about the challenges you faced, 
+        how you solved them, and screenshots of the application running.
+      </p>
+    </div>
+
+    <div class="border-t pt-8">
+      <h3 class="font-bold text-gray-900 mb-4">Check it out</h3>
+      
+      <div class="flex gap-4">
+        <a 
+          href={project.github} 
+          target="_blank" 
+          class="inline-block bg-gray-900 text-white px-6 py-3 rounded-lg font-medium hover:bg-gray-800 transition"
+        >
+          View Source Code
+        </a>
+
+        {project.slug === 'github-finder' && (
+          <a 
+            href="/github-search" 
+            class="inline-block bg-blue-600 text-white px-6 py-3 rounded-lg font-medium hover:bg-blue-700 transition"
+          >
+            Try Live App &rarr;
+          </a>
+        )}
+      </div>
+    </div>
+  </main>
+</Layout>

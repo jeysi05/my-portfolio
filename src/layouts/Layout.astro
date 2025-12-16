@@ -1,0 +1,52 @@
+---
+interface Props {
+  title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content="John Alcantara - Web Developer Portfolio" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+  </head>
+  <body class="bg-gray-50 text-gray-900 font-sans antialiased">
+    
+    <header class="max-w-4xl mx-auto px-6 py-8 flex justify-between items-center">
+      <a href="/" class="text-xl font-bold text-gray-900">JA.</a>
+      
+      <nav class="space-x-6 text-sm font-medium">
+        <a href="/" class="hover:text-blue-600 transition">Work</a>
+        <a href="/blog" class="hover:text-blue-600 transition">Blog</a>
+        <a 
+          href="https://www.linkedin.com/in/john-alcantara-8ab37a35b/" 
+          target="_blank" 
+          rel="noopener noreferrer" 
+          class="hover:text-blue-600 transition"
+        >
+          LinkedIn
+        </a>
+      </nav>
+    </header>
+
+    <slot />
+
+    <footer class="max-w-4xl mx-auto px-6 py-12 text-center text-gray-400 text-sm">
+      &copy; {new Date().getFullYear()} John Alcantara. All rights reserved.
+    </footer>
+
+  </body>
+</html>
+
+<style is:global>
+  /* Optional: Add custom fonts or global resets here if Tailwind isn't enough */
+  html {
+    scroll-behavior: smooth;
+  }
+</style>

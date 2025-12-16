@@ -1,0 +1,83 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { projects } from '../data/projects'; // <--- Now importing from data file
+---
+
+<Layout title="John Alcantara - Web Developer">
+  <main class="max-w-4xl mx-auto px-6">
+    
+    <section class="py-20">
+      <h1 class="text-5xl font-extrabold mb-6 tracking-tight">
+        Hi, I'm <span class="text-blue-600">John Alcantara</span>.
+      </h1>
+      <p class="text-xl text-gray-600 max-w-2xl leading-relaxed">
+        I am a web developer based in the Philippines, passionate about building accessible, performant web applications and scalable backend systems.
+      </p>
+      
+      <div class="mt-8">
+        <button
+          id="copy-email-btn"
+          data-email="j.alcantara1005@gmail.com" 
+          class="inline-block bg-blue-600 text-white px-6 py-3 rounded-lg font-medium hover:bg-blue-700 transition cursor-pointer active:scale-95"
+        >
+          Copy Email Address
+        </button>
+        <p id="copy-message" class="text-green-600 text-sm mt-2 hidden font-medium">
+          Email copied to clipboard!
+        </p>
+      </div>
+    </section>
+
+    <section class="py-10">
+      <h2 class="text-2xl font-bold mb-8 text-gray-900">Selected Projects</h2>
+      
+      <div class="grid gap-8 md:grid-cols-2">
+        {projects.map((project) => (
+          <a 
+            href={`/projects/${project.slug}`} 
+            class="group block p-6 bg-white border border-gray-100 rounded-2xl shadow-sm hover:shadow-md hover:border-blue-100 transition duration-300"
+          >
+            <h3 class="text-xl font-bold mb-2 group-hover:text-blue-600 transition">
+              {project.title} &rarr;
+            </h3>
+            <p class="text-gray-600 mb-4 h-auto min-h-[3rem]">
+              {project.description}
+            </p>
+            <div class="flex flex-wrap gap-2">
+              {project.tech.map((t) => (
+                <span class="bg-gray-100 text-gray-700 text-xs font-semibold px-2.5 py-0.5 rounded">
+                  {t}
+                </span>
+              ))}
+            </div>
+          </a>
+        ))}
+      </div>
+    </section>
+
+  </main>
+
+  <script>
+    const emailBtn = document.getElementById('copy-email-btn');
+    const message = document.getElementById('copy-message');
+
+    if (emailBtn && message) {
+      emailBtn.addEventListener('click', () => {
+      const email = emailBtn.getAttribute('data-email');
+      
+      // Copy to clipboard
+      if (email) {
+          navigator.clipboard.writeText(email).then(() => {
+            // Show success message
+            message.classList.remove('hidden');
+            
+            // Hide message after 2 seconds
+            setTimeout(() => {
+              message.classList.add('hidden');
+            }, 2000);
+          });
+        }
+      });
+    }
+  </script>
+</Layout>
