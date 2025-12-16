@@ -27,10 +27,12 @@ const { project } = Astro.props;
     </div>
 
     <div class="prose prose-lg text-gray-600 mb-10">
-      <p class="text-xl leading-relaxed">{project.fullDescription}</p>
-      <p>
-        Here you can add more details about the challenges you faced, 
-        how you solved them, and screenshots of the application running.
+      <h3 class="text-gray-900 font-bold text-xl mb-2">Overview</h3>
+      <p class="text-xl leading-relaxed mb-6">{project.fullDescription}</p>
+      
+      <h3 class="text-gray-900 font-bold text-xl mb-2">Challenges & Solutions</h3>
+      <p class="leading-relaxed">
+        {project.details}
       </p>
     </div>
 
