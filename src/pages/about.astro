@@ -1,0 +1,65 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="About Me - John Carlo Alcantara">
+  <main class="max-w-4xl mx-auto px-6 py-12">
+    
+    <div class="flex flex-col md:flex-row gap-12 items-start">
+      
+      <div class="w-full md:w-1/3 flex-shrink-0">
+        <img 
+          src="/images/profile.jpg" 
+          alt="John Carlo Alcantara" 
+          class="w-48 h-48 md:w-64 md:h-64 object-cover rounded-2xl shadow-lg rotate-2 hover:rotate-0 transition duration-300 border-4 border-white"
+        />
+      </div>
+
+      <div class="w-full md:w-2/3 space-y-6">
+        <div>
+          <h1 class="text-4xl font-bold text-gray-900 mb-2">About Me</h1>
+          <p class="text-blue-600 font-medium text-lg italic">Co-founder, Red Arch Digital</p>
+        </div>
+
+        <div class="text-gray-600 leading-relaxed space-y-4 text-lg">
+          <p>
+            Hello! I'm <strong>John Carlo Alcantara</strong>. I am the Co-founder and Lead Developer at <strong>Red Arch Digital</strong>, where we specialize in building high-performance digital solutions for businesses and communities.
+          </p>
+
+          <p>
+            Currently pursuing a degree in <strong>Computer Engineering</strong> at De La Salle University, I bridge the gap between rigorous engineering principles and modern web aesthetics. I focus on creating scalable, conversion-driven applications using <strong>Next.js, Astro, and Tailwind CSS</strong>.
+          </p>
+
+          <div class="bg-blue-50 border-l-4 border-blue-600 p-5 my-6 rounded-r-xl">
+            <h3 class="text-blue-900 font-bold mb-2 text-base uppercase tracking-wider">Agency Case Study: La Joya HOA Portal</h3>
+            <p class="text-gray-700 text-base italic">
+              "Developed a community-scale management system for the La Joya Homeowners Association, digitizing administrative workflows and resident communication to solve information fragmentation."
+            </p>
+          </div>
+
+          <p>
+            From architecting complex systems to managing agency workflows, I am dedicated to delivering software that isn't just code, but a tangible solution to a real-world problem.
+          </p>
+
+          <p class="font-semibold text-gray-800">When I'm not leading projects at the agency, I'm into:</p>
+          <ul class="grid grid-cols-2 gap-3 text-base">
+            <li class="flex items-center gap-2 text-gray-700 font-medium">🏋️‍♂️ <span>Fitness & Gym</span></li>
+            <li class="flex items-center gap-2 text-gray-700 font-medium">📸 <span>Photography</span></li>
+            <li class="flex items-center gap-2 text-gray-700 font-medium">📈 <span>Market Analysis</span></li>
+            <li class="flex items-center gap-2 text-gray-700 font-medium">🎮 <span>Strategic Gaming</span></li>
+          </ul>
+        </div>
+
+        <div class="pt-6 flex gap-4">
+          <a href="mailto:j.alcantara1005@gmail.com" class="bg-gray-900 text-white px-8 py-3 rounded-xl font-medium hover:bg-gray-800 transition shadow-md text-center">
+            Work With Me
+          </a>
+          <a href="/John_Carlo_Alcantara_CV.pdf" target="_blank" class="border border-gray-300 text-gray-700 px-8 py-3 rounded-xl font-medium hover:bg-gray-50 transition text-center">
+            View My CV
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </main>
+</Layout>

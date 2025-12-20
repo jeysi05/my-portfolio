@@ -23,27 +23,15 @@ const { title } = Astro.props;
       
       <nav class="space-x-6 text-sm font-medium">
         <a href="/" class="hover:text-blue-600 transition">Home</a>
-        
-        <a 
-          href="https://github.com/jeysi05" 
-          target="_blank" 
-          class="hover:text-blue-600 transition"
-        >
-          GitHub
-        </a>
-
-        <a 
-          href="https://www.linkedin.com/in/john-alcantara-8ab37a35b/" 
-          target="_blank" 
-          rel="noopener noreferrer" 
-          class="hover:text-blue-600 transition"
-        >
-          LinkedIn
-        </a>
+        <a href="/about" class="hover:text-blue-600 transition">About</a>
+        <a href="https://github.com/jeysi05" target="_blank" class="hover:text-blue-600 transition">GitHub</a>
+        <a href="https://www.linkedin.com/in/john-alcantara-8ab37a35b/" target="_blank" rel="noopener noreferrer" class="hover:text-blue-600 transition">LinkedIn</a>
       </nav>
     </header>
 
-    <slot />
+    <main>
+      <slot />
+    </main>
 
     <footer id="contact" class="max-w-4xl mx-auto px-6 py-12 text-center text-gray-400 text-sm">
       &copy; {new Date().getFullYear()} John Alcantara. All rights reserved.
@@ -53,7 +41,6 @@ const { title } = Astro.props;
 </html>
 
 <style is:global>
-  /* Optional: Add custom fonts or global resets here if Tailwind isn't enough */
   html {
     scroll-behavior: smooth;
   }
