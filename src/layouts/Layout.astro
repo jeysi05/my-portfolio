@@ -1,47 +1,66 @@
 ---
-interface Props {
-  title: string;
-}
-
+interface Props { title: string; }
 const { title } = Astro.props;
 ---
-
 <!doctype html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
   <head>
     <meta charset="UTF-8" />
-    <meta name="description" content="John Alcantara - Web Developer Portfolio" />
     <meta name="viewport" content="width=device-width" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap" rel="stylesheet">
   </head>
-  <body class="bg-gray-50 text-gray-900 font-sans antialiased">
+  <body class="bg-[#050505] text-zinc-400 font-['Plus_Jakarta_Sans'] antialiased overflow-x-hidden selection:bg-amber-400 selection:text-black">
     
-    <header class="max-w-4xl mx-auto px-6 py-8 flex justify-between items-center">
-      <a href="/" class="text-xl font-bold text-gray-900">JA.</a>
+    <div class="fixed inset-0 -z-10 pointer-events-none overflow-hidden">
+      <div class="absolute inset-0 opacity-[0.04] mix-blend-overlay noise-bg"></div>
       
-      <nav class="space-x-6 text-sm font-medium">
-        <a href="/" class="hover:text-blue-600 transition">Home</a>
-        <a href="/about" class="hover:text-blue-600 transition">About</a>
-        <a href="https://github.com/jeysi05" target="_blank" class="hover:text-blue-600 transition">GitHub</a>
-        <a href="https://www.linkedin.com/in/john-alcantara-8ab37a35b/" target="_blank" rel="noopener noreferrer" class="hover:text-blue-600 transition">LinkedIn</a>
+      <div class="absolute top-[-15%] left-[-10%] w-[700px] h-[700px] bg-amber-500/20 blur-[140px] rounded-full animate-float"></div>
+      
+      <div class="absolute bottom-[-15%] right-[-10%] w-[600px] h-[600px] bg-amber-600/15 blur-[140px] rounded-full animate-float-slow"></div>
+    </div>
+
+    <header class="sticky top-0 z-50 backdrop-blur-xl bg-black/40 border-b border-white/5">
+      <nav class="max-w-5xl mx-auto px-6 py-5 flex justify-between items-center">
+        <a href="/" class="text-2xl font-black tracking-tighter text-white group">
+          JA<span class="text-amber-400 group-hover:drop-shadow-[0_0_12px_rgba(251,191,36,0.9)] transition-all">.</span>
+        </a>
+        <div class="flex items-center gap-8 text-sm font-bold uppercase tracking-[0.2em]">
+          <a href="/" class="hover:text-amber-400 transition-colors">Home</a>
+          <a href="/about" class="hover:text-amber-400 transition-colors underline decoration-amber-400/50 underline-offset-8">About</a>
+          <a href="https://github.com/jeysi05" target="_blank" class="relative group bg-amber-400 text-black px-6 py-2 rounded-full font-black overflow-hidden transition-all hover:scale-105 active:scale-95 shadow-[0_0_20px_rgba(251,191,36,0.3)]">
+            <span class="relative z-10">GitHub</span>
+            <div class="absolute inset-0 bg-white opacity-0 group-hover:opacity-20 transition-opacity"></div>
+          </a>
+        </div>
       </nav>
     </header>
 
-    <main>
-      <slot />
-    </main>
+    <slot />
 
-    <footer id="contact" class="max-w-4xl mx-auto px-6 py-12 text-center text-gray-400 text-sm">
-      &copy; {new Date().getFullYear()} John Alcantara. All rights reserved.
-    </footer>
+    <style is:global>
+      .noise-bg {
+        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+      }
 
+      @keyframes float {
+        0%, 100% { transform: translate(0, 0) scale(1); }
+        50% { transform: translate(40px, -30px) scale(1.1); }
+      }
+      @keyframes float-slow {
+        0%, 100% { transform: translate(0, 0) scale(1); }
+        50% { transform: translate(-50px, 50px) scale(1.1); }
+      }
+      .animate-float { animation: float 12s ease-in-out infinite; }
+      .animate-float-slow { animation: float-slow 16s ease-in-out infinite; }
+      
+      main {
+        animation: slideUp 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+      }
+      @keyframes slideUp {
+        from { opacity: 0; transform: translateY(30px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+    </style>
   </body>
 </html>
-
-<style is:global>
-  html {
-    scroll-behavior: smooth;
-  }
-</style>

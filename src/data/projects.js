@@ -1,4 +1,15 @@
 export const projects = [
+
+  {
+    slug: "pickle-jar-courts",
+    title: "Pickle Jar Courts Reservation",
+    description: "Full-stack booking platform with real-time scheduling and automated pricing logic.",
+    fullDescription: "A comprehensive reservation system built for a local sports business. It manages court availability, handles automated discounts, and streamlines the payment verification process.",
+    details: "The core challenge was preventing 'time-travel' bookings and overlapping schedules. I implemented a validation layer that checks the server time against Firestore entries before confirming a slot. I also built a dynamic pricing engine that automatically applies 'Happy Hour' discounts based on the selected time slot.",
+    tech: ["React.js", "Firebase", "Tailwind CSS", "EmailJS"],
+    github: "https://github.com/jeysi05/pickle-jar-courts",
+    demo: "https://pickle-jar-courts.vercel.app/", 
+  },
   {
     slug: "github-finder",
     title: "GitHub User Finder",
@@ -40,4 +51,5 @@ export const projects = [
     github: "https://github.com/jeysi05/portfolio-v1",
     demo: "https://portfolio-v1-amber-nine.vercel.app/", 
   },
+
 ];

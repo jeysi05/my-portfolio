@@ -3,49 +3,53 @@ import Layout from '../layouts/Layout.astro';
 import { projects } from '../data/projects';
 ---
 
-<Layout title="John Alcantara | Web Developer">
-  <main class="max-w-4xl mx-auto px-6 py-12">
+<Layout title="John Carlo Alcantara | Developer">
+  <main class="max-w-5xl mx-auto px-6 py-20">
     
-    <section class="mb-20 pt-10">
-      <span class="text-blue-600 font-bold tracking-wider uppercase text-sm">Web Developer</span>
-      <h1 class="text-5xl md:text-6xl font-extrabold text-gray-900 mt-4 mb-6 leading-tight">
-        Building digital experiences with <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-cyan-500">code</span> and creativity.
-      </h1>
-      <p class="text-xl text-gray-600 leading-relaxed max-w-2xl mb-8">
-        Hi, I'm <strong>John Alcantara</strong>. I am a passionate developer based in the Philippines. 
-        I specialize in building fast, accessible, and responsive web applications using 
-        modern tools like <strong>React</strong>, <strong>Next.js</strong>, and <strong>Node.js</strong>.
-      </p>
+    <section class="mb-32">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-400/10 border border-amber-400/20 text-amber-400 text-[10px] font-bold uppercase tracking-[0.2em] mb-8">
+        <span class="relative flex h-2 w-2">
+          <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-amber-400 opacity-75"></span>
+          <span class="relative inline-flex rounded-full h-2 w-2 bg-amber-500"></span>
+        </span>
+        Systems & Design
+      </div>
       
+      <h1 class="text-6xl md:text-8xl font-black text-white leading-[0.95] mb-8 tracking-tighter">
+        Building with <br/> 
+        <span class="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 via-yellow-200 to-amber-500">
+          precision.
+        </span>
+      </h1>
+      
+      <p class="text-xl text-zinc-400 max-w-2xl leading-relaxed mb-10">
+        Computer Engineering student at DLSU. Focused on high-performance booking systems and scalable web architecture.
+      </p>
+
       <div class="flex gap-4">
-        <a href="#projects" class="bg-gray-900 text-white px-6 py-3 rounded-lg font-medium hover:bg-gray-800 transition">
-          View My Work
-        </a>
-        <a href="mailto:jeysi05@gmail.com" class="bg-white border border-gray-300 text-gray-700 px-6 py-3 rounded-lg font-medium hover:bg-gray-50 transition">
-          Contact Me
+        <a href="#work" class="group bg-amber-400 text-black px-10 py-4 rounded-2xl font-black hover:bg-yellow-300 transition-all duration-300 flex items-center gap-3 shadow-2xl shadow-amber-400/10">
+          View Projects
+          <span class="group-hover:translate-x-1 transition-transform">→</span>
         </a>
       </div>
     </section>
 
-    <h2 id="projects" class="text-2xl font-bold text-gray-900 mb-8 flex items-center gap-2">
-      <span class="w-2 h-8 bg-blue-600 rounded-full"></span>
-      Featured Projects
-    </h2>
+    <div class="grid grid-cols-1 md:grid-cols-12 gap-6" id="work">
+      {projects.map((project, i) => (
+        <a href={`/projects/${project.slug}`} 
+           class={`group relative overflow-hidden rounded-[2.5rem] bg-zinc-900/40 border border-white/5 p-10 transition-all duration-500 
+           hover:border-amber-400/30 hover:bg-zinc-800/60 hover:-translate-y-2
+           ${i === 0 ? 'md:col-span-8' : 'md:col-span-4'}`}>
+          
+          <div class="absolute inset-0 bg-[radial-gradient(circle_at_50%_120%,rgba(251,191,36,0.1),transparent)] opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
 
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-      {projects.map((project) => (
-        <a href={`/projects/${project.slug}`} class="group block h-full">
-          <div class="bg-white border border-gray-200 rounded-2xl p-6 h-full hover:shadow-xl hover:border-blue-100 transition duration-300 transform hover:-translate-y-1">
-            <h3 class="text-xl font-bold text-gray-900 group-hover:text-blue-600 transition mb-3 flex justify-between items-center">
-              {project.title} 
-              <span class="text-gray-400 group-hover:translate-x-1 transition">&rarr;</span>
-            </h3>
-            <p class="text-gray-600 mb-6 text-sm leading-relaxed line-clamp-3">
-              {project.description}
-            </p>
-            <div class="flex flex-wrap gap-2 mt-auto">
-              {project.tech.map((t) => (
-                <span class="bg-blue-50 text-blue-700 text-xs font-semibold px-3 py-1 rounded-full">
+          <div class="relative z-10 flex flex-col h-full">
+            <h3 class="text-3xl font-bold text-white mb-4 group-hover:text-amber-400 transition-colors">{project.title}</h3>
+            <p class="text-zinc-400 text-lg mb-8 line-clamp-2 leading-snug group-hover:text-zinc-200 transition-colors">{project.description}</p>
+            
+            <div class="mt-auto flex flex-wrap gap-2">
+              {project.tech.map(t => (
+                <span class="text-[10px] font-black text-amber-400 border border-amber-400/20 px-3 py-1 rounded-full uppercase tracking-widest group-hover:bg-amber-400/10 transition-colors">
                   {t}
                 </span>
               ))}
@@ -54,6 +58,5 @@ import { projects } from '../data/projects';
         </a>
       ))}
     </div>
-    
   </main>
 </Layout>
