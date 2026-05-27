@@ -1,5 +1,5 @@
 export const GLOBALS = {
-  profilePic: "/public/images/profile.jpg",
+  profilePic: "images/profile.jpg",
 };
 
 export const PROJECTS = [
