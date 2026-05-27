@@ -1,55 +1,34 @@
-export const projects = [
+export const GLOBALS = {
+  profilePic: "/public/images/profile.jpg",
+};
 
-  {
-    slug: "pickle-jar-courts",
-    title: "Pickle Jar Courts Reservation",
-    description: "Full-stack booking platform with real-time scheduling and automated pricing logic.",
-    fullDescription: "A comprehensive reservation system built for a local sports business. It manages court availability, handles automated discounts, and streamlines the payment verification process.",
-    details: "The core challenge was preventing 'time-travel' bookings and overlapping schedules. I implemented a validation layer that checks the server time against Firestore entries before confirming a slot. I also built a dynamic pricing engine that automatically applies 'Happy Hour' discounts based on the selected time slot.",
-    tech: ["React.js", "Firebase", "Tailwind CSS", "EmailJS"],
-    github: "https://github.com/jeysi05/pickle-jar-courts",
-    demo: "https://pickle-jar-courts.vercel.app/", 
+export const PROJECTS = [
+  { 
+    id: "01", 
+    name: "Anzani Restaurant", 
+    type: "View Project", 
+    desc: "Custom website and table reservation system built for a premium Mediterranean restaurant.", 
+    live_url: "https://anzani-restaurant-ph.vercel.app/"
   },
   {
-    slug: "github-finder",
-    title: "GitHub User Finder",
-    description: "An app that uses the GitHub API to search for users and display their profile stats.",
-    fullDescription: "I built this application to practice fetching data from third-party APIs. It uses the GitHub REST API to retrieve user information in real-time.",
-    details: "The main challenge in this project was handling asynchronous data and API errors. If a user typed a name that didn't exist, the app would crash. I solved this by implementing try-catch blocks and conditional rendering, ensuring the user gets a helpful 'Not Found' message instead of a blank screen.",
-    tech: ["Astro", "JavaScript", "Tailwind CSS", "GitHub API"],
-    github: "https://github.com/jeysi05/my-portfolio",
-    demo: "/github-search", 
+    id: "02",
+    name: "Burnt Diner",
+    type: "View Project",
+    desc: "Restaurant website featuring the full menu and an online ordering flow.",
+    live_url: "https://burnt-diner-web.vercel.app/" 
   },
   {
-    slug: "ecommerce-dashboard",
-    title: "E-Commerce Dashboard",
-    description: "A comprehensive admin dashboard for managing products, orders, and analytics.",
-    fullDescription: "This project is a full-stack admin dashboard built to help business owners manage their inventory. It features real-time data updates and chart visualization.",
-    details: "A key challenge was managing the state of the application. I wanted the 'Delete' and 'Add' buttons to feel instant without reloading the page. I solved this by using React's useState hook to optimistically update the UI, making the dashboard feel snappy and responsive like a native app.",
-    tech: ["React", "Next.js", "Supabase"],
-    github: "https://github.com/jeysi05/ecommerce-dash",
-    demo: "https://ecommerce-dash-seven.vercel.app/", 
+    id: "03",
+    name: "El-Nissi Staycation",
+    type: "View Project",
+    desc: "Booking and reservation website for a staycation property in Santa Rosa, Laguna.",
+    live_url: "https://el-nissi-staycation.vercel.app/"
   },
-  {
-    slug: "lajoya-hoa",
-    title: "La Joya HOA Portal",
-    description: "A centralized community portal for residents to view announcements and manage HOA dues.",
-    fullDescription: "I built this platform to digitize the La Joya Homeowners Association's operations. It serves as a central hub where residents can stay updated on community news, access important documents, and handle billing transparency.",
-    // I wrote a 'details' section focusing on UI/UX and Data presentation
-    details: "One major challenge was designing a user-friendly interface for a diverse age group, including older residents. I prioritized accessibility and clear navigation. Technically, rendering the layout consistently across mobile and desktop devices required a mobile-first approach using Tailwind CSS grid systems.",
-    tech: ["Next.js", "React", "Tailwind CSS"], 
-    github: "https://github.com/jeysi05/lajoya-hoa", // CHECK THIS LINK
-    demo: "https://lajoya-hoa.vercel.app/", 
-  },
-  {
-    slug: "portfolio-v1",
-    title: "Portfolio v1",
-    description: "My previous personal site built to learn static site generation concepts.",
-    fullDescription: "This was my first attempt at building a portfolio. It uses vanilla HTML/CSS and taught me the fundamentals of responsive design.",
-    details: "Building without a framework like Bootstrap or Tailwind was difficult but necessary. The challenge was getting the layout to look good on mobile phones. I solved this by deeply learning CSS Flexbox and Media Queries, manually calculating breakpoints to ensure the site was fully responsive.",
-    tech: ["HTML/CSS", "JavaScript"],
-    github: "https://github.com/jeysi05/portfolio-v1",
-    demo: "https://portfolio-v1-amber-nine.vercel.app/", 
-  },
-
+  { 
+    id: "04", 
+    name: "Court Vision", 
+    type: "View Project", 
+    desc: "Native booking for pickleball courts. Bypassing web-views for deep render cycle optimization and server-time validation logic to prevent time-travel scheduling.", 
+    live_url: "" 
+  }
 ];

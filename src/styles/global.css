@@ -1,1 +1,119 @@
-@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  /* LIGHT MODE */
+  :root {
+    --bg: #f4f4f5;
+    --surface: rgba(255, 255, 255, 0.85);
+    --border: rgba(0, 0, 0, 0.1);
+    --text: #0f0f11;
+    --muted: #52525b;
+    --active-card: rgba(217, 119, 6, 0.1);
+    --accent: #d97706; /* Deeper amber for better readability on light backgrounds */
+    --monitor-bg: #e5e5e5;
+    --overlay: rgba(0, 0, 0, 0.04);
+    --overlay-hover: rgba(0, 0, 0, 0.08);
+  }
+
+  /* DARK MODE */
+  [data-theme='dark'] {
+    --bg: #050505;
+    --surface: rgba(20, 20, 20, 0.7);
+    --border: rgba(255, 255, 255, 0.12);
+    --text: #f4f4f5;
+    --muted: #a1a1aa;
+    --active-card: rgba(251, 191, 36, 0.1);
+    --accent: #fbbf24;
+    --monitor-bg: #000000;
+    --overlay: rgba(255, 255, 255, 0.05);
+    --overlay-hover: rgba(255, 255, 255, 0.1);
+  }
+
+  body {
+    background-color: var(--bg);
+    color: var(--text);
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    margin: 0;
+    overflow-x: hidden;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+
+  @media (min-width: 1024px) {
+    body {
+      overflow: hidden; 
+    }
+  }
+}
+
+/* IDE / Control Room Layout - Edge to Edge */
+.app-container {
+  display: flex;
+  flex-direction: column;
+  width: 100vw;
+  height: 100vh;
+  background: transparent;
+}
+
+.hero-grid {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  overflow: auto;
+}
+
+@media (min-width: 1024px) {
+  .hero-grid {
+    flex-direction: row;
+    overflow: hidden; 
+  }
+  .hero-sidebar {
+    width: 360px;
+    border-right: 1px solid var(--border);
+    overflow-y: auto;
+    background: var(--surface);
+    backdrop-filter: blur(12px);
+  }
+}
+
+.workspace-pane {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.hero-monitor {
+  flex: 1;
+  position: relative;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.hero-monitor iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+.timeline-pane {
+  height: 280px; 
+  background: var(--surface);
+  backdrop-filter: blur(12px);
+  overflow-y: auto;
+}
+
+@media (max-width: 1023px) {
+  .timeline-pane {
+    height: auto;
+    flex: 1;
+  }
+  .hero-monitor {
+    min-height: 400px;
+    flex: none;
+  }
+}
