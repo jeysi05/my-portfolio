@@ -2,9 +2,10 @@ export default function Monitor({ activeTrack }) {
   const isLiveSite = activeTrack && activeTrack.live_url && activeTrack.live_url.startsWith('http');
 
   return (
-    <div className="hero-monitor" style={{ position: "relative", display: "flex", flexDirection: "column", width: "100%", height: "100%", background: "linear-gradient(135deg, var(--surface) 0%, var(--monitor-bg) 100%)" }}>
+    <div className="hero-monitor" style={{ position: "relative", width: "100%", background: "linear-gradient(135deg, var(--surface) 0%, var(--monitor-bg) 100%)" }}>
       
-      <div style={{ width: "100%", height: "100%", flex: 1, position: "relative", zIndex: 1 }}>
+      {/* Absolute Fill Wrapper to fix mobile iframe collapse */}
+      <div style={{ position: "absolute", top: 0, left: 0, right: 0, bottom: 0, zIndex: 1 }}>
         {activeTrack ? (
           isLiveSite ? (
             <iframe 
@@ -25,6 +26,7 @@ export default function Monitor({ activeTrack }) {
         )}
       </div>
       
+      {/* Lower Third Info Bar */}
       {activeTrack && (
         <div style={{ position: "absolute", bottom: "24px", left: "24px", right: "24px", display: "flex", justifyContent: "space-between", alignItems: "center", zIndex: 10, pointerEvents: "none" }}>
           
