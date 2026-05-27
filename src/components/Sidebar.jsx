@@ -1,6 +1,6 @@
 export default function Sidebar({ profilePic }) {
   return (
-    <aside style={{ display: "flex", flexDirection: "column", gap: "24px", padding: "24px", height: "100%", overflowY: "auto" }}>
+    <aside style={{ display: "flex", flexDirection: "column", gap: "24px", padding: "24px", flex: 1 }}>
         
       <div style={{ width: "160px", height: "160px", borderRadius: "12px", overflow: "hidden", border: `1px solid var(--border)`, boxShadow: "0 8px 20px -8px rgba(251, 191, 36, 0.15)", flexShrink: 0 }}>
         {profilePic ? (

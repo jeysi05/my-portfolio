@@ -52,7 +52,7 @@
   display: flex;
   flex-direction: column;
   width: 100vw;
-  height: 100vh;
+  min-height: 100vh; /* Allows mobile to scroll naturally */
   background: transparent;
 }
 
@@ -63,7 +63,12 @@
   overflow: auto;
 }
 
+/* Desktop App Lock */
 @media (min-width: 1024px) {
+  .app-container {
+    height: 100vh; /* Locks strict full-screen on desktop */
+    overflow: hidden;
+  }
   .hero-grid {
     flex-direction: row;
     overflow: hidden; 
